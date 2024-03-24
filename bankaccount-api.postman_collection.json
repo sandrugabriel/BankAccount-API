@@ -1,0 +1,31 @@
+{
+	"info": {
+		"_postman_id": "58572e9e-9e76-4f52-ad6e-9990a4715a2c",
+		"name": "bankaccount-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33668461"
+	},
+	"item": [
+		{
+			"name": "GetAllAccountBank",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7190/api/v1/bankAccounts",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7190",
+					"path": [
+						"api",
+						"v1",
+						"bankAccounts"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
