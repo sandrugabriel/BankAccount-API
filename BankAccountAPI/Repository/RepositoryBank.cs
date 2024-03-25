@@ -4,6 +4,7 @@ using BankAccountAPI.Models;
 using BankAccountAPI.Repository.interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Xml.Linq;
 
 namespace BankAccountAPI.Repository
 {
@@ -23,11 +24,32 @@ namespace BankAccountAPI.Repository
             return await _context.BankAccounts.ToListAsync();
         }
 
+        public async Task<BankAccount> GetByIdAsync(int id)
+        {
+            List<BankAccount> bankAccounts = await _context.BankAccounts.ToListAsync();
+
+            for (int i = 0; i < bankAccounts.Count; i++)
+            {
+                if (bankAccounts[i].Id == id) return bankAccounts[i];
+            }
+
+            return null;
+        }
+
         public async Task<List<BankAccount>> GetByOwnerName(string name)
         {
             List<BankAccount> bankAccounts = await _context.BankAccounts.ToListAsync();
 
-            fr
+            List<BankAccount> myAccount = new List<BankAccount>();
+            for(int i=0;i<bankAccounts.Count;i++)
+            {
+                if (bankAccounts[i].Name.Equals(name)) myAccount.Add(bankAccounts[i]);
+            }
+
+            return myAccount;
         }
+
+
+
     }
 }
