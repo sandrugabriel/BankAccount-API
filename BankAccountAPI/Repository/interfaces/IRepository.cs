@@ -9,5 +9,6 @@ namespace BankAccountAPI.Repository.interfaces
 
         Task<List<BankAccount>> GetByOwnerName(string name);
 
+        Task<BankAccount> GetByIdAsync(int id);
     }
 }

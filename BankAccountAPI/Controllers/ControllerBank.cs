@@ -23,11 +23,22 @@ namespace BankAccountAPI.Controllers
         [HttpGet("/all")]
         public async Task<ActionResult<IEnumerable<BankAccount>>> GetAll()
         {
-            var products = await _repository.GetAllAsync();
-            return Ok(products);
+            var bank = await _repository.GetAllAsync();
+            return Ok(bank);
         }
 
+        [HttpGet("/findById")]
+        public async Task<ActionResult<BankAccount>> GetById([FromQuery]int id)
+        {
+            var bank = await _repository.GetByIdAsync(id);
+            return Ok(bank);
+        }
 
-
+        [HttpGet("/findByName/{name}")]
+        public async Task<ActionResult<List<BankAccount>>> GetByName([FromRoute] string name)
+        {
+            var bank = await _repository.GetByOwnerName(name);
+            return Ok(bank);
+        }
     }
 }
