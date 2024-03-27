@@ -1,4 +1,5 @@
-﻿using BankAccountAPI.Models;
+﻿using BankAccountAPI.Dto;
+using BankAccountAPI.Models;
 using BankAccountAPI.Repository.interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -40,5 +41,29 @@ namespace BankAccountAPI.Controllers
             var bank = await _repository.GetByOwnerName(name);
             return Ok(bank);
         }
+
+
+        [HttpPost("/create")]
+        public async Task<ActionResult<BankAccount>> CreateCar([FromBody] CreateBankRequest request)
+        {
+            var car = await _repository.Create(request);
+            return Ok(car);
+
+        }
+
+        [HttpPut("/update")]
+        public async Task<ActionResult<BankAccount>> UpdateCar([FromQuery] int id, [FromBody] UpdateBankRequest request)
+        {
+            var car = await _repository.Update(id, request);
+            return Ok(car);
+        }
+
+        [HttpDelete("/deleteById")]
+        public async Task<ActionResult<BankAccount>> DeleteCarById([FromQuery] int id)
+        {
+            var car = await _repository.DeleteById(id);
+            return Ok(car);
+        }
+
     }
 }
