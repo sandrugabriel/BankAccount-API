@@ -44,25 +44,25 @@ namespace BankAccountAPI.Controllers
 
 
         [HttpPost("/create")]
-        public async Task<ActionResult<BankAccount>> CreateCar([FromBody] CreateBankRequest request)
+        public async Task<ActionResult<BankAccount>> Create([FromBody] CreateBankRequest request)
         {
-            var car = await _repository.Create(request);
-            return Ok(car);
+            var bank = await _repository.Create(request);
+            return Ok(bank);
 
         }
 
         [HttpPut("/update")]
-        public async Task<ActionResult<BankAccount>> UpdateCar([FromQuery] int id, [FromBody] UpdateBankRequest request)
+        public async Task<ActionResult<BankAccount>> Update([FromQuery] int id, [FromBody] UpdateBankRequest request)
         {
-            var car = await _repository.Update(id, request);
-            return Ok(car);
+            var bank = await _repository.Update(id, request);
+            return Ok(bank);
         }
 
         [HttpDelete("/deleteById")]
-        public async Task<ActionResult<BankAccount>> DeleteCarById([FromQuery] int id)
+        public async Task<ActionResult<BankAccount>> DeleteById([FromQuery] int id)
         {
-            var car = await _repository.DeleteById(id);
-            return Ok(car);
+            var bank = await _repository.DeleteById(id);
+            return Ok(bank);
         }
 
     }
