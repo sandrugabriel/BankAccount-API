@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BankAccountAPI.Data;
+using BankAccountAPI.Dto;
 using BankAccountAPI.Models;
 using BankAccountAPI.Repository.interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -48,6 +49,48 @@ namespace BankAccountAPI.Repository
 
             return myAccount;
         }
+
+        public async Task<BankAccount> Create(CreateBankRequest request)
+        {
+
+            var bank = _mapper.Map<BankAccount>(request);
+
+            _context.BankAccounts.Add(bank);
+
+            await _context.SaveChangesAsync();
+
+            return bank;
+
+        }
+
+        public async Task<BankAccount> Update(int id, UpdateBankRequest request)
+        {
+
+            var bank = await _context.BankAccounts.FindAsync(id);
+
+            bank.Balance = request.Balance ?? bank.Balance;
+            bank.Type = request.Type ?? bank.Type;
+            bank.Name = request.Name ?? bank.Name;
+
+            _context.BankAccounts.Update(bank);
+
+            await _context.SaveChangesAsync();
+
+            return bank;
+
+        }
+
+        public async Task<BankAccount> DeleteById(int id)
+        {
+            var bank = await _context.BankAccounts.FindAsync(id);
+
+            _context.BankAccounts.Remove(bank);
+
+            await _context.SaveChangesAsync();
+
+            return bank;
+        }
+
 
 
 
