@@ -1,6 +1,8 @@
 using BankAccountAPI.Data;
 using BankAccountAPI.Repository;
 using BankAccountAPI.Repository.interfaces;
+using BankAccountAPI.Service;
+using BankAccountAPI.Service.interfaces;
 using FluentMigrator.Runner;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,6 +17,8 @@ builder.Services.AddSwaggerGen();
 
 
 builder.Services.AddScoped<IRepository, RepositoryBank>();
+builder.Services.AddScoped<IBankCommandService, BankCommandService>();
+builder.Services.AddScoped<IBankQueryService, BankQueryService>();
 
 builder.Services.AddDbContext<AppDbContext>(option => option.UseMySql(builder.Configuration.GetConnectionString("Default")!,
     new MySqlServerVersion(new Version(8, 0, 6))));
