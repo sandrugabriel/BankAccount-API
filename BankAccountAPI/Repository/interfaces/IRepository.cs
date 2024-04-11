@@ -6,7 +6,7 @@ namespace BankAccountAPI.Repository.interfaces
 {
     public interface IRepository
     {
-        Task<IEnumerable<BankAccount>> GetAllAsync();
+        Task<List<BankAccount>> GetAllAsync();
 
         Task<List<BankAccount>> GetByOwnerName(string name);
 

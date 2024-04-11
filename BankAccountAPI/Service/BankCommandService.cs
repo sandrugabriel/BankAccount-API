@@ -37,7 +37,7 @@ namespace BankAccountAPI.Service
             {
                 throw new ItemDoesNotExist(Constants.Constants.ItemDoesNotExist);
             }
-            bank = await _repository.DeleteById(id);
+            await _repository.DeleteById(id);
             return bank;
         }
 
