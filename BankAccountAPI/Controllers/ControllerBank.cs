@@ -30,7 +30,7 @@ namespace BankAccountAPI.Controllers
                 return Ok(banks);
 
             }
-            catch (ItemDoesNotExist ex)
+            catch (ItemsDoNotExist ex)
             {
                 return NotFound(ex.Message);
             }

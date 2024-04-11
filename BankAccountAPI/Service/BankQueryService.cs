@@ -24,7 +24,7 @@ namespace BankAccountAPI.Service
                 throw new ItemsDoNotExist(Constants.Constants.ItemsDoNotExist);
             }
 
-            return (List<BankAccount>)bank;
+            return bank;
         }
 
         public async Task<List<BankAccount>> GetAllByName(string name)

@@ -20,7 +20,7 @@ namespace BankAccountAPI.Repository
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<BankAccount>> GetAllAsync()
+        public async Task<List<BankAccount>> GetAllAsync()
         {
             return await _context.BankAccounts.ToListAsync();
         }
