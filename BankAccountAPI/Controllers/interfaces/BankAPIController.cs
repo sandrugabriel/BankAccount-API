@@ -5,37 +5,37 @@ using Microsoft.AspNetCore.Mvc;
 namespace BankAccountAPI.Controllers.interfaces
 {
     [ApiController]
-    [Route("api/v1/[controller]")]
+    [Route("api/v1/[controller]/")]
     public abstract class BankAPIController : ControllerBase
     {
 
-        [HttpGet("/all")]
+        [HttpGet("all")]
         [ProducesResponseType(statusCode: 200, type: typeof(List<BankAccount>))]
         [ProducesResponseType(statusCode: 400, type: typeof(String))]
         public abstract Task<ActionResult<List<BankAccount>>> GetAll();
 
-        [HttpGet("/findByPrice")]
+        [HttpGet("findByPrice")]
         [ProducesResponseType(statusCode: 200, type: typeof(List<BankAccount>))]
         [ProducesResponseType(statusCode: 400, type: typeof(String))]
         public abstract Task<ActionResult<List<BankAccount>>> GetAllByName([FromQuery] string name);
 
-        [HttpGet("/findById")]
+        [HttpGet("findById")]
         [ProducesResponseType(statusCode: 200, type: typeof(BankAccount))]
         [ProducesResponseType(statusCode: 400, type: typeof(String))]
         public abstract Task<ActionResult<BankAccount>> GetById(int id);
 
-        [HttpPost("/createBankAccount")]
+        [HttpPost("createBankAccount")]
         [ProducesResponseType(statusCode: 201, type: typeof(BankAccount))]
         [ProducesResponseType(statusCode: 400, type: typeof(String))]
         public abstract Task<ActionResult<BankAccount>> CreateBankAccount(CreateBankRequest request);
 
-        [HttpPut("/updateBankAccount")]
+        [HttpPut("updateBankAccount")]
         [ProducesResponseType(statusCode: 200, type: typeof(BankAccount))]
         [ProducesResponseType(statusCode: 400, type: typeof(String))]
         [ProducesResponseType(statusCode: 404, type: typeof(String))]
         public abstract Task<ActionResult<BankAccount>> UpdateBankAccount(int id, UpdateBankRequest request);
 
-        [HttpDelete("/deleteBankAccount")]
+        [HttpDelete("deleteBankAccount")]
         [ProducesResponseType(statusCode: 200, type: typeof(BankAccount))]
         [ProducesResponseType(statusCode: 404, type: typeof(String))]
         public abstract Task<ActionResult<BankAccount>> DeleteBankAccount(int id);

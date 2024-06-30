@@ -51,7 +51,7 @@ namespace BankAccountAPI.Service
             }
 
 
-            if (bank.Balance <= -1)
+            if (request.Balance <= -1)
             {
                 throw new InvalidPrice(Constants.Constants.InvalidPrice);
             }
